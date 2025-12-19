@@ -1,0 +1,21 @@
+    def save_task_edit(self, label, new_text, edit_window):
+        """Salva a edição da tarefa, atualiza a lista tasks e fecha a janela."""
+        if new_text.strip():
+            for task in self.tasks:
+                if task["label"] == label:
+                    task["text"] = new_text.strip()
+                    break
+            label.config(text=new_text.strip())
+            edit_window.destroy()
+        else:
+            messagebox.showerror("Erro", "O campo não pode estar vazio!")
+        print(self.tasks)
+
+    def delete_task(self, frame):
+        """Remove a tarefa da interface e da lista tasks."""
+        for task in self.tasks:
+            if task["frame"] == frame:
+                self.tasks.remove(task)
+                break
+        frame.destroy()
+        print(self.tasks)

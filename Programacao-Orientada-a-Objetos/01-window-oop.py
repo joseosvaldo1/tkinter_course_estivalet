@@ -1,0 +1,54 @@
+# Janelas OOP:
+
+# Executando uma janela simples sem orientação a objetos:
+
+# import tkinter as tk
+# root = tk.Tk()
+# root.mainloop()
+
+
+###########################################################################
+
+# Executando uma janela simples com orientação a objetos:
+
+# import tkinter as tk
+
+# class App(tk.Tk):
+#     def __init__(self):
+#         super().__init__()
+
+# if __name__ == "__main__":
+#     app = App()
+#     app.mainloop()
+
+
+###########################################################################
+
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+
+
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        # Configure the root window:
+        self.title('My Awesome App')
+        self.geometry('300x50')
+
+        # Label:
+        self.label = ttk.Label(self, text='Hello, Tkinter!')
+        self.label.pack()
+
+        # Button:
+        self.button = ttk.Button(self, text='Click Me')
+        self.button['command'] = self.button_clicked
+        self.button.pack()
+
+    def button_clicked(self):
+        showinfo(title='Information', message='Hello, Tkinter!')
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
